@@ -5,8 +5,9 @@ if (isset($_SESSION['result'])) {
     <span>
       <?= $_SESSION['result'] ?>
     </span>
-    <span id="deleteParent">×</span>
+    <span class="delAlert">×</span>
   </div>
-  <script src="./scripts/deleteParent.js"></script>
+  <script src="./js/delAlert.js"></script>
 <?php
+unset($_SESSION['result']);
 }

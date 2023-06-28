@@ -1,22 +1,23 @@
-<form action="../account/signIn.php" method="get">
+<form action="../account/signIn.php" method="get" class="signForm pad20 g10">
   <h3>Авторизация</h3>
-  <div>
-    <input
-      type="text"
-      name="login"
-      placeholder="Логин"
-      pattern="^[A-Za-z0-9\._-]+$"
-      class="required"
-    />
+  <div class="flex column">
+    <div>
+      <input
+required
+        type="text"
+        name="login"
+        placeholder="Логин"
+        pattern="^[A-Za-z0-9\._-]+$"
+        class="required"
+      />
+    </div>
+    <div>
+      <input
+required type="password" name="password" placeholder="Пароль" />
+    </div>
   </div>
-  <div>
-    <input type="password" name="password" placeholder="Пароль" />
+  <div class="btns">
+    <button>Войти</button>
+    <button class="delAjax" type="button">Отмена</button>
   </div>
-  <div>
-    <label for="rules">
-      <input type="checkbox" name="rules" id="rules" />
-      <span>Ознакомлен с <a href="">правилами работы сервиса</a></span>
-    </label>
-  </div>
-  <button>Войти</button>
 </form>
