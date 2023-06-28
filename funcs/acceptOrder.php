@@ -14,3 +14,4 @@ if (isset($_GET['id'])) {
 } else {
     $_SESSION['result'] = "Что одобряем то?";
 }
+header("location: ../admin.php");

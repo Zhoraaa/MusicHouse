@@ -27,11 +27,11 @@ $orders = selectFrom($query, "ALL");
             generateListItem($order, "order");
             $emptyList = false;
         }
-        if ($emptyList) {
+    }
+    if ($emptyList) {
     ?>
-            <p>Новых заказов ещё нет.</p>
+        <p>Новых заказов ещё нет.</p>
     <?php
-        }
     }
     ?>
     <h2>Старые:</h2>
@@ -42,11 +42,11 @@ $orders = selectFrom($query, "ALL");
             generateListItem($order, "order");
             $emptyList = false;
         }
-        if ($emptyList) {
-    ?>
-            <p>Старых заказов ещё нет.</p>
-    <?php
-        }
     }
+    if ($emptyList) {
+    ?>
+        <p>Старых заказов ещё нет.</p>
+    <?php
+    }   
     ?>
 </div>

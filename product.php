@@ -18,13 +18,11 @@ if (!empty($_GET['id'])) {
   INNER JOIN countries ON products.country = countries.id
   INNER JOIN types ON products.type = types.id
   WHERE products.id = " . $_GET['id'] .
-  " ORDER BY products.name ASC;";
+        " ORDER BY products.name ASC;";
     $product = selectFrom($query, "ONE");
-    if (isset($_GET['edit']) && $user['role'] == 1) {
-        include "./funcs/editProduct.php";
-    } else {
-        include "./funcs/seeProduct.php";
-    }
-} elseif ($user['role'] == 1 && empty($_GET['id'])) {
-    include "./admin/setProduct.php";
+
+    include "./funcs/seeProduct.php";
+} else {
+    $_SESSION['result'] = "Такого товара не существует";
+    header("location: /");
 }

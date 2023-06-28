@@ -11,7 +11,7 @@
       <div> <span>Цена: </span> <span class="ctrl-r"><?= $product['cost'] ?></span> </div>
     </div>
     <div class="btns">
-      <a href="/user/addToOrder.php?id=<?= $_GET['id'] ?>" class="radius accent-to-black">Добавить к заказу</a>
+      <a href="/funcs/addToOrder.php?id=<?= $_GET['id'] ?>" class="radius accent-to-black">Добавить к заказу</a>
       <a href="../catalogue.php" class="pad10 radius accent-to-black">Назад</a>
     </div>
   </div>

@@ -1,36 +1,27 @@
 <?php
-require "../functions/connect.php";
-require "../functions/getProduct.php";
+require "DBinteraction.php";
 $id = $_GET['id'];
 
-$query = "SELECT * FROM `orders` WHERE `client` = '" . $_COOKIE['user'] . "' AND `game` = $id AND `status` = '1'";
-$res = $con->query($query);
-$check = $res->fetch_assoc();
+$query = "SELECT * FROM `orders` WHERE `client` = '" . $_COOKIE['user'] . "' AND `product` = $id AND `status` = '1'";
+$check = selectFrom($query, "ONE");
 print_r($check);
 
-function addToCart($con, $id, $check)
+function addToCart($id, $check, $result)
 {
     if (empty($check)) {
-        echo $query = "INSERT INTO `orders`(`id`, `client`, `game`, `count`, `status`) VALUES (NULL,'" . $_COOKIE['user'] . "','$id','1','1')";
-        $res = $con->query($query);
-        $_SESSION['result'] .= "Товар добавлен!";
+        echo $query = "INSERT INTO `orders`(`id`, `client`, `product`, `status`) VALUES (NULL,'" . $_COOKIE['user'] . "','$id','1')";
+        insertOrUpdate($query);
+        $result .= "Товар добавлен!";
     } else {
-        $count = $check['count'] + 1;
-        echo $query = "UPDATE `orders` SET `count`='$count' WHERE `id`=" . $check['id'];
-        $res = $con->query($query);
-        $_SESSION['result'] .= "Количество товара увеличено!";
+        $result .= "Такой заказ уже есть!";
     }
+    return $result;
 }
 
-if ($product['count']) {
-    if ($check['count'] < $product['count'] || empty($check)) {
-        addToCart($con, $id, $check);
-        $_SESSION['result'] = "Корзина пополнена! ";
-    } else {
-        $_SESSION['result'] = "Извините! Вы уже претендуете на все ключи для этого товара!";
-    }
+if (empty($check)) {
+    $result = "Корзина пополнена! ";
+    $_SESSION['result'] = addToCart($id, $check, $result);
 } else {
-    $_SESSION['result'] = "Извините! Сейчас нет ключей для этого товара!";
+    $_SESSION['result'] = "Вы уже претендуете на этот товар!";
 }
-echo $_SESSION['result'];
 header("location: ../product.php?id=$id");

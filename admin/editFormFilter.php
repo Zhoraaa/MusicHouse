@@ -8,7 +8,7 @@ if (!empty($_GET['id'])) {
 } else {
     if (isset($_GET['edit'])) {
         $edit = $_GET['edit'];
-        include("./admin/addForms/$edit.html");
+        include("./admin/addForms/$edit.php");
     }
 }
 }

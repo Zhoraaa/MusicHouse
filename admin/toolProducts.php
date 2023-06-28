@@ -11,7 +11,7 @@ $products = selectFrom($query, "ALL");
     <a href="?tool=products&edit=product" class="accent-to-black ctrl-e brad10">+ Добавить</a>
     <?php
     foreach ($products as $product) {
-        generateListItem($product, "country");
+        generateListItem($product, "product");
     }
     ?>
 </div>

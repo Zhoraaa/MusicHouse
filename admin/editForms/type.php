@@ -13,6 +13,6 @@ $type = selectFrom($query, "ONE");
     </div>
 </div>
 <div class="btns">
-    <a href="../admin/delData.php?" class="accent-to-black">Удалить</a>
+    <a href="../admin/delData.php?id=<?= $_GET['id'] ?>" class="accent-to-black">Удалить</a>
     <a href="../admin.php?tool=categories" class="accent-to-black">Отмена</a>
 </div>
